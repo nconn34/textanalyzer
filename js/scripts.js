@@ -1,3 +1,9 @@
+//Utility Logic
+
+function noInputtedWord(word, text) {
+  return ((text.trim().length === 0) || word.trim().length === 0);
+}
+
 // Business Logic
 
 function wordCounter(text) {
@@ -14,7 +20,7 @@ function wordCounter(text) {
 }
 
 function numberOfOccurrencesInText(word, text) {
-  if ((text.trim().length === 0) || (word.trim().length === 0)) {
+  if (noInputtedWord(word, text)) {
     return 0;
   }
   const wordArray = text.split(" ");
@@ -30,7 +36,7 @@ function numberOfOccurrencesInText(word, text) {
 // UI Logic
 
 function boldPassage(word, text) {
-    if ((text.trim().length === 0) || (word.trim().length === 0)) {
+    if (noInputtedWord(word, text)) {
       return "";
     }
     let htmlString ="<p>";
@@ -46,7 +52,7 @@ function boldPassage(word, text) {
     return htmlString + "</p>";
   }
 
-$(document).ready(function(){
+  $(document).ready(function(){
   $("form#word-counter").submit(function(event){
     event.preventDefault();
     const passage = $("#text-passage").val();
@@ -55,21 +61,24 @@ $(document).ready(function(){
     const occurrencesOfWord = numberOfOccurrencesInText(word, passage);
     $("#total-count").html(wordCount);
     $("#selected-count").html(occurrencesOfWord);
-    function boldPassage(word, text) {
-  let htmlString ="<p>";
-  let textArray = text.split(" ");
-  textArray.forEach(function(element, index){
-    if (word === element) {
-      htmlString = htmlString.concat("<b>" + element + "</b>");
-    } else {
-      htmlString = htmlString.concat(element);
-    }
-    if (index !== (textArray.length - 1)){
-      htmlString = htmlString.concat(" ");
-    }
-  });
-  return htmlString + "</p>";
-}
+    $("bolded-passage").html(boldPassage(word, passage));
+
+   // ** Ask question: Would it matter if this function was in or out of the document?
+  //  function boldPassage(word, text) {
+ // let htmlString ="<p>";
+ // let textArray = text.split(" ");
+  //textArray.forEach(function(element, index){
+  //  if (word === element) {
+    //  htmlString = htmlString.concat("<b>" + element + "</b>");
+   // } else {
+   //   htmlString = htmlString.concat(element);
+   // }
+  //  if (index !== (textArray.length - 1)){
+   //   htmlString = htmlString.concat(" ");
+   // }
+ // });
+ // return htmlString + "</p>";
+// }
   });
 });
 
