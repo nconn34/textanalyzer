@@ -33,7 +33,14 @@ function noInputtedWord(word, text) {
     });
     return wordCount;
   }
-  
+
+  function mostCommon(word, text) {
+    if (noInputtedWord(word, text)) {
+      return "N/A";
+    }
+  }
+
+
   // UI Logic
   
   function boldPassage(word, text) {
@@ -65,5 +72,6 @@ function noInputtedWord(word, text) {
       $("#total-count").html(wordCount);
       $("#selected-count").html(occurrencesOfWord);
       $("#bolded-passage").html(boldPassage(word, passage));
+      $("#common").html(mostCommon);
     });
   });
