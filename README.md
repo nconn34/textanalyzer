@@ -23,11 +23,8 @@ Expected Output: 0
 Test: "It should not count numbers as words."
 Code: wordCounter("hi there 77 19");
 Expected Output: 2
->
->>
->>>
->>
->
+
+
 Describe: numberOfOccurrencesInText()
 
 Test: "It should return 0 occurrences of a word for an empty string." 
@@ -101,3 +98,13 @@ const word ="hello";
 const text = "hello there";
 boldPassage(word, text);
 Expected Output "<p><b>hello</b>there</p>
+
+
+Describe: mostCommon()
+
+Test: "It should return the number of times a word occurs in a text."
+Code:
+const word = "common";
+const text = "It is common to see common perform in a chicago bar called common.";
+mostCommon (word, text);
+Expected Output: 3
