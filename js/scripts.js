@@ -35,9 +35,17 @@ function noInputtedWord(word, text) {
   }
 
   function mostCommon(word, text) {
-    if (noInputtedWord(word, text)) {
-      return "N/A";
-    }
+   if (noInputtedWord(word, text)) {
+     return "N/A";
+   }
+    let wordCount = 0;
+    const wordArray = text.split(" ");
+    wordArray.forEach(function(element) {
+      if (word === element) {
+        wordCount++
+      }
+    });
+    return wordCount;
   }
 
 
@@ -72,6 +80,6 @@ function noInputtedWord(word, text) {
       $("#total-count").html(wordCount);
       $("#selected-count").html(occurrencesOfWord);
       $("#bolded-passage").html(boldPassage(word, passage));
-      $("#common").html(mostCommon);
+      $("#common").html(mostCommon(word, passage));
     });
   });
