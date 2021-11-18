@@ -1,13 +1,19 @@
 // Utility Logic
 
 function noInputtedWord(word, text) {
-    return ((text.trim().length === 0) || (word.trim().length === 0));
+    for (let i=0; i < arguments.length; i++) {
+      console.log(arguments[i]);
+      if (arguments[i].trim().length === 0){
+        return true;
+      }
+    }
+    return false;
   }
   
   // Business Logic
   
   function wordCounter(text) {
-    if (text.trim().length === 0) {
+    if (noInputtedWord(text)) {
       return 0;
     }
     let wordCount = 0;
